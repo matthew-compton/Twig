@@ -12,6 +12,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.CodeSignature;
 import org.aspectj.lang.reflect.MethodSignature;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 @Aspect
@@ -74,6 +75,7 @@ public class Twig {
             builder.append(" [Thread:\"").append(Thread.currentThread().getName()).append("\"]");
         }
 
+        Log.v(asTag(cls), generateInsult());
         Log.v(asTag(cls), builder.toString());
     }
 
@@ -97,6 +99,48 @@ public class Twig {
         }
 
         Log.v(asTag(cls), builder.toString());
+    }
+
+    private static String generateInsult() {
+        Random r = new Random();
+        int i = r.nextInt(10);
+        String insult;
+        switch (i) {
+            case 0:
+                insult = "I bet you have a great personality.";
+                break;
+            case 1:
+                insult = "Good morning, Mr. President.";
+                break;
+            case 2:
+                insult = "Your birth certificate is an apology from the condom factory.";
+                break;
+            case 3:
+                insult = "You must have been born on a highway, because that's where most accidents happen.";
+                break;
+            case 4:
+                insult = "It's better to let someone think you're an idiot than to type some code and prove it.";
+                break;
+            case 5:
+                insult = "I’m jealous of all the people that haven't met you!";
+                break;
+            case 6:
+                insult = "You carry your weight well.";
+                break;
+            case 7:
+                insult = "It looks like your face caught on fire and someone tried to put it out with a fork.";
+                break;
+            case 8:
+                insult = "You probably like enums.";
+                break;
+            case 9:
+                insult = "You're so ugly Hello Kitty said goodbye to you.";
+                break;
+            default:
+                insult = "I really messed up here.";
+                break;
+        }
+        return insult;
     }
 
     private static String asTag(Class<?> cls) {
